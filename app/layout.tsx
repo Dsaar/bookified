@@ -4,6 +4,7 @@ import { IBM_Plex_Serif, Mona_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
 
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Navbar/>
         {children}
+        <Toaster/>
         </body>
     </html>
     </ClerkProvider>
