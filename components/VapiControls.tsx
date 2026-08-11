@@ -11,26 +11,10 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const VapiControls = ({ book }: { book: IBook }) => {
-	const { status, isActive, messages, currentMessage, currentUserMessage, duration, start, stop, clearError, limitError, isBillingError, maxDurationSeconds } = useVapi(book)
+	const { status, isActive, messages, currentMessage, currentUserMessage, duration, start, stop, clearErrors, } = useVapi(book)
 	const router = useRouter();
 
-	useEffect(() => {
-		if (limitError) {
-			toast.error(limitError);
-			if (isBillingError) {
-				router.push("/subscriptions");
-			} else {
-				router.push("/");
-			}
-			clearError();
-		}
-	}, [isBillingError, limitError, router, clearError]);
-
-	const formatDuration = (seconds: number) => {
-		const mins = Math.floor(seconds / 60);
-		const secs = seconds % 60;
-		return `${mins}:${secs.toString().padStart(2, '0')}`;
-	};
+	
 
 	const getStatusDisplay = () => {
 		switch (status) {
@@ -96,9 +80,7 @@ const VapiControls = ({ book }: { book: IBook }) => {
 							</div>
 
 							<div className="vapi-status-indicator">
-								<span className="vapi-status-text">
-									{formatDuration(duration)}/{formatDuration(maxDurationSeconds)}
-								</span>
+								<span className="vapi-status-text">0:00/15:00</span>
 							</div>
 						</div>
 					</div>
