@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const VapiControls = ({ book }: { book: IBook }) => {
-	const { status, isActive, messages, currentMessage, currentUserMessage, duration, start, stop, clearErrors, } = useVapi(book)
+	const { status, isActive, messages, currentMessage, currentUserMessage, duration, start, stop, } = useVapi(book)
 	const router = useRouter();
 
 	
